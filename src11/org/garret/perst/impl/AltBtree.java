@@ -1514,8 +1514,8 @@ public class AltBtree extends PersistentResource implements Index {
         void reset() { 
             super.reset();
             int skip = (order == ASCENT_ORDER) ? start : nElems - start - 1;
-            while (--skip >= 0 && hasNext()) {
-                next();
+            while (--skip >= 0 && this.hasNext()) {
+                this.next();
             }
         }
         
@@ -1546,6 +1546,7 @@ public class AltBtree extends PersistentResource implements Index {
         return i;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public Object getAt(int i) {
         Iterator iterator;
         if (i < 0 || i >= nElems) {

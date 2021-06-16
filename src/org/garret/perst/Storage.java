@@ -3,6 +3,7 @@ package org.garret.perst;
 import java.util.Iterator;
 import org.garret.perst.fulltext.*;
 import org.garret.perst.impl.ThreadTransactionContext;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 
 /**
  * Object storage
@@ -1161,6 +1162,7 @@ public interface Storage {
      * Get object identifier
      * @param obj inspected object
      */
+    @SideEffectFree
     public int getOid(Object obj);
 
     /**

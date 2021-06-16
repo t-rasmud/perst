@@ -5026,6 +5026,7 @@ public class StorageImpl implements Storage {
             oids = result.iterator();
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
         public Object next() {
             int oid = ((Integer)oids.next()).intValue();
             return lookupObject(oid, null);
