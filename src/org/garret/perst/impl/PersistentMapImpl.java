@@ -295,6 +295,7 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
         }
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     public Set<K> keySet() {
 	if (keySet == null) {
 	    keySet = new AbstractSet<K>() {
@@ -328,6 +329,7 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
 	return keySet;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     public Collection<V> values() {
 	if (valuesCol == null) {
 	    valuesCol = new AbstractCollection<V>() {
@@ -361,6 +363,7 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
 	return valuesCol;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     protected Iterator<Entry<K,V>> entryIterator() {
         if (index != null) { 
             if (type == ClassDescriptor.tpValue) {
@@ -548,8 +551,8 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
 	buf.append("{");
 
 	Iterator<Entry<K,V>> i = entrySet().iterator();
-        boolean hasNext = i.hasNext();
-        while (hasNext) {
+//        boolean hasNext = i.hasNext();
+        while (i.hasNext()) {
 	    Entry<K,V> e = i.next();
 	    K key = e.getKey();
             V value = e.getValue();
@@ -564,8 +567,8 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
             } else {
 		buf.append(value);
             }
-            hasNext = i.hasNext();
-            if (hasNext) {
+//            hasNext = i.hasNext();
+            if (i.hasNext()) {
                 buf.append(", ");
             }
         }
@@ -665,14 +668,17 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
             return null;
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // Iterator has next : Iterator guaranteed to have atleast one element
         public K firstKey() {
             return entryIterator(Index.ASCENT_ORDER).next().getKey();
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // Iterator has next : Iterator guaranteed to have atleast one element
         public K lastKey() {
             return entryIterator(Index.DESCENT_ORDER).next().getKey();
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
         protected Iterator<Entry<K,V>> entryIterator(final int order) {
             if (index != null) { 
                 if (type == ClassDescriptor.tpValue) {               
@@ -926,6 +932,7 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
         }
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // Iterator has next : Iterator guaranteed to have atleast one element
     public K firstKey() {
         if (index != null) { 
             if (type == ClassDescriptor.tpValue) {               
@@ -942,6 +949,7 @@ class PersistentMapImpl<K extends Comparable, V> extends PersistentResource impl
         }
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // Iterator has next : Iterator guaranteed to have atleast one element
     public K lastKey() {
         if (index != null) { 
             if (type == ClassDescriptor.tpValue) {       

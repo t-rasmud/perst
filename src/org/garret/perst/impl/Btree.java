@@ -2,6 +2,7 @@ package org.garret.perst.impl;
 import  org.garret.perst.*;
 import  java.util.*;
 import  java.lang.reflect.Array;
+import org.checkerframework.checker.iteration.qual.HasNext;
 
 class Btree<T> extends PersistentCollection<T> implements Index<T> { 
     int       root;
@@ -570,7 +571,7 @@ class Btree<T> extends PersistentCollection<T> implements Index<T> {
 
 
     class BtreeSelectionIterator<E> extends IterableIterator<E> implements PersistentIterator { 
-        BtreeSelectionIterator(Key from, Key till, int order) { 
+        @HasNext BtreeSelectionIterator(Key from, Key till, int order) {
             this.from = from;
             this.till = till;
             this.order = order;
@@ -1281,7 +1282,7 @@ class Btree<T> extends PersistentCollection<T> implements Index<T> {
     }
 
     class BtreeSelectionEntryIterator extends BtreeSelectionIterator<Map.Entry<Object,T>> { 
-        BtreeSelectionEntryIterator(Key from, Key till, int order) {
+        @HasNext BtreeSelectionEntryIterator(Key from, Key till, int order) {
             super(from, till, order);
         }
             
@@ -1331,7 +1332,7 @@ class Btree<T> extends PersistentCollection<T> implements Index<T> {
     }
 
 
-    public IterableIterator<Map.Entry<Object,T>> entryIterator(Key from, Key till, int order) { 
+    public @HasNext IterableIterator<Map.Entry<Object,T>> entryIterator(Key from, Key till, int order) {
         return new BtreeSelectionEntryIterator(checkKey(from), checkKey(till), order);
     }
 
@@ -1353,6 +1354,7 @@ class Btree<T> extends PersistentCollection<T> implements Index<T> {
         return i;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public T getAt(int i) {
         IterableIterator<Map.Entry<Object,T>> iterator;
         if (i < 0 || i >= nElems) {

@@ -120,6 +120,7 @@ class ThickIndex<T> extends PersistentCollection<T> implements Index<T> {
             return inner != null;
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
         public E next() { 
             if (inner == null) { 
                 throw new NoSuchElementException();
@@ -198,6 +199,7 @@ class ThickIndex<T> extends PersistentCollection<T> implements Index<T> {
             return inner != null;
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
         public Map.Entry<Object,E> next() { 
             ExtendEntry<E> curr = new ExtendEntry<E>(key, inner.next());
             if (!inner.hasNext()) {                 
@@ -433,6 +435,7 @@ class ThickIndex<T> extends PersistentCollection<T> implements Index<T> {
         return i;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public T getAt(int i) {
         IterableIterator<Map.Entry<Object,T>> iterator;
         if (i < 0 || i >= nElems) {

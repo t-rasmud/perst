@@ -135,6 +135,7 @@ public class KDTree<T> extends PersistentCollection<T> implements Multidimension
         }
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public void optimize() { 
         Iterator<T> itr = iterator();
         int n = nMembers;

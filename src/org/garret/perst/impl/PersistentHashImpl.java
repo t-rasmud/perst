@@ -283,6 +283,7 @@ class PersistentHashImpl<K, V> extends PersistentResource implements IPersistent
         }
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     public Set<K> keySet() {
 	if (keySet == null) {
 	    keySet = new AbstractSet<K>() {
@@ -316,6 +317,7 @@ class PersistentHashImpl<K, V> extends PersistentResource implements IPersistent
 	return keySet;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     public Collection<V> values() {
 	if (valuesCol == null) {
 	    valuesCol = new AbstractCollection<V>() {
@@ -550,8 +552,8 @@ class PersistentHashImpl<K, V> extends PersistentResource implements IPersistent
 	buf.append("{");
 
 	Iterator<Entry<K,V>> i = entrySet().iterator();
-        boolean hasNext = i.hasNext();
-        while (hasNext) {
+//        boolean hasNext = i.hasNext();
+        while (i.hasNext()) {
 	    Entry<K,V> e = i.next();
 	    K key = e.getKey();
             V value = e.getValue();
@@ -566,8 +568,8 @@ class PersistentHashImpl<K, V> extends PersistentResource implements IPersistent
             } else {
 		buf.append(value);
             }
-            hasNext = i.hasNext();
-            if (hasNext) {
+//            hasNext = i.hasNext();
+            if (i.hasNext()) {
                 buf.append(", ");
             }
         }

@@ -345,7 +345,8 @@ class PersistentListImpl<E> extends PersistentCollection<E> implements IPersiste
         }
         return (E)root.set(i, obj);
     }
-       
+
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public Object[] toArray() { 
         int n = nElems;
         Object[] arr = new Object[n];
@@ -356,6 +357,7 @@ class PersistentListImpl<E> extends PersistentCollection<E> implements IPersiste
         return arr;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public <T> T[] toArray(T[] arr) {
         int n = nElems;
         if (arr.length < n) { 

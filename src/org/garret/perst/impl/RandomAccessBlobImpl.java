@@ -31,6 +31,7 @@ public class RandomAccessBlobImpl extends PersistentResource implements Blob {
             return read(b, 0, 1) == 1 ? b[0] & 0xFF : -1;
         }
 
+        @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
         public int read(byte b[], int off, int len) {
             if (currPos >= size) { 
                 return -1;

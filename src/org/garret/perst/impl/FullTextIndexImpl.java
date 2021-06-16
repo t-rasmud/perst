@@ -37,8 +37,9 @@ public class FullTextIndexImpl extends PersistentResource implements FullTextInd
         public boolean hasNext() { 
             return iterator.hasNext();
         }
-                                                
-        public Keyword next() { 
+
+        @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
+        public Keyword next() {
             return new KeywordImpl((Map.Entry)iterator.next());
         }
         

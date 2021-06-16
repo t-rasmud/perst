@@ -4,6 +4,7 @@ import  org.garret.perst.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.ArrayList;
+import org.checkerframework.checker.iteration.qual.HasNext;
 
 class MultiFieldValue implements Comparable<MultiFieldValue> { 
     Comparable[] values;
@@ -604,7 +605,7 @@ class BtreeMultiFieldIndex<T> extends Btree<T> implements FieldIndex<T> {
         return super.iterator(convertKey(from), convertKey(till), order);
     }
 
-    public IterableIterator<Map.Entry<Object,T>> entryIterator(Key from, Key till, int order) {
+    public @HasNext IterableIterator<Map.Entry<Object,T>> entryIterator(Key from, Key till, int order) {
         return super.entryIterator(convertKey(from), convertKey(till), order);
     }
 
