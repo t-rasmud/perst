@@ -89,7 +89,7 @@ public class PinnedPersistent implements IPersistent, ICloneable
         return true;
     }
 
-    @SideEffectFree
+//    @SideEffectFree
     public final Storage getStorage() {
         return storage;
     }

@@ -1162,7 +1162,7 @@ public interface Storage {
      * Get object identifier
      * @param obj inspected object
      */
-    @SideEffectFree
+//    @SideEffectFree
     public int getOid(Object obj);
 
     /**
