@@ -1514,8 +1514,8 @@ public class AltBtree extends PersistentResource implements Index {
         void reset() { 
             super.reset();
             int skip = (order == ASCENT_ORDER) ? start : nElems - start - 1;
-            while (--skip >= 0 && this.hasNext()) {
-                this.next();
+            while (--skip >= 0 && hasNext()) {
+                next();
             }
         }
         
