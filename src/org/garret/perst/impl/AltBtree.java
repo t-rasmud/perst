@@ -1558,6 +1558,7 @@ class AltBtree<T> extends PersistentCollection<T> implements Index<T> {
         return i;
     }
 
+    @SuppressWarnings("iteration:method.invocation")    // next called in loop: loop index always less than Iterator size
     public T getAt(int i) {
         IterableIterator<Map.Entry<Object,T>> iterator;
         if (i < 0 || i >= nElems) {
