@@ -18,8 +18,12 @@ public abstract class IterableIterator<T> implements Iterable<T>, Iterator<T> {
      * Please notive, that this method doesn't check if selection contain more than one object
      * @return first selected object or null if selection is empty
      */
-    public T first() { 
-        return hasNext() ? next() : null;
+    public T first() {
+        if (hasNext()) {
+            return next();
+        }
+        return null;
+//        return hasNext() ? next() : null;
     }
 
     /**
