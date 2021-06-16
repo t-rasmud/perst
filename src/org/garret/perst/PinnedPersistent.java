@@ -1,5 +1,6 @@
 package org.garret.perst;
 import org.garret.perst.impl.StorageImpl;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 
 /**
  * Base class for all persistent capable objects.
@@ -88,6 +89,7 @@ public class PinnedPersistent implements IPersistent, ICloneable
         return true;
     }
 
+    @SideEffectFree
     public final Storage getStorage() {
         return storage;
     }
