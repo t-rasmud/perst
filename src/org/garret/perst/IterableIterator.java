@@ -19,11 +19,7 @@ public abstract class IterableIterator<T> implements Iterable<T>, Iterator<T> {
      * @return first selected object or null if selection is empty
      */
     public T first() {
-        if (hasNext()) {
-            return next();
-        }
-        return null;
-//        return hasNext() ? next() : null;
+        return this.hasNext() ? this.next() : null;
     }
 
     /**

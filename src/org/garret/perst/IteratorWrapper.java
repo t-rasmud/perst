@@ -13,8 +13,9 @@ public class IteratorWrapper<T> extends IterableIterator<T>
     public boolean hasNext() { 
         return iterator.hasNext();
     }
-    
-    public T next() { 
+
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
+    public T next() {
         return iterator.next();
     }
 

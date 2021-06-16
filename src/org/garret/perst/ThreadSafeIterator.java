@@ -31,7 +31,8 @@ public class ThreadSafeIterator<T> extends IterableIterator<T> {
         }
         return result;
     }
-    
+
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     public T next() { 
         T obj = next;
         if (obj == null) { 
