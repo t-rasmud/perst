@@ -47,7 +47,7 @@ targets: makejar - compile & jar
 		</javac>
 	</target>
 
-	<target name="check-iteration" depends="init">
+	<target name="check-iteration" depends="clean, init">
 		<cf.javac srcdir="src" excludes="org/garret/perst/aspectj/**,org/garret/perst/jassist/**" destdir="classes" deprecation="off"  debug="on" optimize="on">
 			<compilerarg line="-processor org.checkerframework.checker.iteration.IterationChecker"/>
 			<!-- optional, to not check uses of library methods:
