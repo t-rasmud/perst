@@ -53,7 +53,7 @@ targets: makejar - compile & jar
 			<!-- optional, to not check uses of library methods:
               <compilerarg value="-AskipUses=^(java\.awt\.|javax\.swing\.)"/>
             -->
-			<compilerarg value="-AsuppressWarnings=contracts.conditional.postcondition,contracts.postcondition,inconsistent.constructor.type,super.invocation"/>
+			<compilerarg value="-AsuppressWarnings=contracts.conditional.postcondition,contracts.postcondition,inconsistent.constructor.type,super.invocation,override.return"/>
 			<compilerarg value="-AwarnUnneededSuppressions"/>
 			<compilerarg line="-Xmaxerrs 10000"/>
 		</cf.javac>
