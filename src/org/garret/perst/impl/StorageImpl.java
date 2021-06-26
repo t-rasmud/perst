@@ -5,6 +5,7 @@ import org.garret.perst.fulltext.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.io.*;
+import org.checkerframework.dataflow.qual.SideEffectFree;
 
 public class StorageImpl implements Storage {
     /**
@@ -5231,6 +5232,7 @@ public class StorageImpl implements Storage {
         }
     }
 
+    @SideEffectFree
     public int getOid(Object obj)
     {
         return (obj instanceof IPersistent) ? ((IPersistent)obj).getOid() : obj == null ? 0 : objMap.getOid(obj);

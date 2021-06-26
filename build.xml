@@ -54,6 +54,7 @@ targets: makejar - compile & jar
               <compilerarg value="-AskipUses=^(java\.awt\.|javax\.swing\.)"/>
             -->
 			<compilerarg value="-AsuppressWarnings=contracts.conditional.postcondition,contracts.postcondition,inconsistent.constructor.type,super.invocation"/>
+			<compilerarg value="-AwarnUnneededSuppressions"/>
 			<compilerarg line="-Xmaxerrs 10000"/>
 		</cf.javac>
 	</target>
